@@ -12,7 +12,7 @@
 }
         </style>
 <center>
-    <form action="" method="GET" style="border: 1px solid;width: 600px;">
+    <form action="" method="GET" style="border: 1px solid;width: 600px;" id = "signupform">
        <table>
            <tr>
                <td>
@@ -103,4 +103,24 @@
    </form>
    </center>
    </body>
+   <script>
+    console.log(firstname)
+    var firstname = document.forms['signupform']['firstName'];
+    var lastname = document.forms['signupform']['lastName'];
+    var mobile = document.forms['signupform']['mobileNumber'];
+    var email = document.forms['signupform']['email'];
+    var btn = document.getElementById('btn-signup');
+    
+    document.querySelectorAll('#signupform input').forEach(e=>{
+      e.addEventListener('keyup', function(event){
+          if(!firstName.validity.valid || !lastName.validity.valid ||!mobileNumber.validity.valid || !email.validity.valid){
+            console.log('worked');
+            btn.setAttribute('disabled', true);
+          }
+          else{
+            btn.removeAttribute('disabled');
+          }
+      })
+    });
+  </script>
    </html>
